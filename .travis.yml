@@ -1,3 +1,6 @@
+arch:
+    - amd64
+    - ppc64le
 language: python
 
 sudo: false
@@ -29,6 +32,19 @@ matrix:
       dist: xenial
       sudo: true
       env: MYPY_CHECK='true'
+      # power jobs added.
+      - python: 3.6
+      env: BUILD_DOCS='true'
+      arch: ppc64le
+    - python: 3.7
+      dist: xenial
+      sudo: true
+      arch: ppc64le
+    - python: 3.8
+      dist: xenial
+      sudo: true
+      arch: ppc64le
+      env: MYPY_CHECK='true'      
 
 before_install:
   - docker pull arafato/azurite
